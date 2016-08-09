@@ -8,6 +8,6 @@ if [ -n "$CERTS" ]; then
 fi
 
 # Create a dependable link to the first live cert directory.
-ln `ls -1dA /etc/letsencrypt/live/*/ | head -n1` /etc/ssl/le-first
+ln -s `ls -1dA /etc/letsencrypt/live/*/ | head -n1` /etc/ssl/le-first
 
 exit 0
