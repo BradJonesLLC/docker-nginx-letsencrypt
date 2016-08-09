@@ -5,9 +5,10 @@ RUN echo "deb http://ftp.debian.org/debian jessie-backports main" > /etc/apt/sou
 ENV SUPERVISOR_VERSION 3.3.0
 
 RUN set -x \
+    && apt-get update && apt-get install --no-install-recommends -yqq \
     cron \
-    ca-certificates \
     dnsmasq \
+    wget \
     && apt-get install --no-install-recommends -yqq certbot -t jessie-backports \
     && wget https://github.com/Supervisor/supervisor/archive/${SUPERVISOR_VERSION}.tar.gz \
     && tar -xvf ${SUPERVISOR_VERSION}.tar.gz \
@@ -15,16 +16,17 @@ RUN set -x \
     && apt-get clean autoclean && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
+COPY certbot-crontab /etc/cron.d/certbot
+
 COPY supervisord.conf /etc/supervisord.conf
 COPY certs.sh /
 COPY bootstrap.sh /
+COPY post-renew.sh /
 
-RUN mkdir /jail
+RUN mkdir /le-root
 
 EXPOSE 80 443
 
 VOLUME /etc/letsencrypt
-
-COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
 
 ENTRYPOINT ["/bootstrap.sh"]

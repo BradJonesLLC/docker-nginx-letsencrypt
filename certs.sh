@@ -5,13 +5,9 @@ if [ -n "$CERTS" ]; then
         --standalone-supported-challenges http-01 \
         -d "$CERTS" --keep --agree-tos --email "$EMAIL" \
         || exit 1
-
-    mkdir -p /usr/local/etc/haproxy/certs
-    for site in `ls -1 /etc/letsencrypt/live`; do
-        cat /etc/letsencrypt/live/$site/privkey.pem \
-          /etc/letsencrypt/live/$site/fullchain.pem \
-          | tee /usr/local/etc/haproxy/certs/haproxy-"$site".pem >/dev/null
-    done
 fi
+
+# Create a dependable link to the first live cert directory.
+ln `ls -1dA */ | head -n1` /etc/ssl/le-first
 
 exit 0
