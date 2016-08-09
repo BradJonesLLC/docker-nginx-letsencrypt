@@ -1,7 +1,7 @@
 # Dockerized Nginx with Let's Encrypt
 
 This container provides an Nginx application with Let's Encrypt certificates
-generated at startup, as well as renewed (if necessary) once a week.
+generated at startup, as well as renewed (if necessary) and Nginx gracefully restarted.
 
 ## Usage
 
@@ -9,8 +9,9 @@ generated at startup, as well as renewed (if necessary) once a week.
 docker run \
     -e CERTS=my.domain,my.other.domain \
     -e EMAIL=my.email@my.domain \
+    -v /etc/ssl/dhparam:/etc/ssl/dhparam \
     -v /etc/letsencrypt:/srv/letsencrypt \
-    -p 80:90 -p 443:443
+    -p 80:80 -p 443:443
     bradjonesllc/docker-nginx-letsencrypt
 ```
 
