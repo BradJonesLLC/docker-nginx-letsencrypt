@@ -20,7 +20,6 @@ COPY certbot-crontab /etc/cron.d/certbot
 COPY supervisord.conf /etc/supervisord.conf
 COPY certs.sh /
 COPY bootstrap.sh /
-COPY post-renew.sh /
 COPY default.conf /etc/nginx/conf.d/default.conf
 
 RUN mkdir /le-root
