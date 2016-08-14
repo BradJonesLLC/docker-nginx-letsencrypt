@@ -10,7 +10,7 @@ docker run \
     -e CERTS=my.domain,my.other.domain \
     -e EMAIL=my.email@my.domain \
     -v /etc/ssl/dhparam:/etc/ssl/dhparam \
-    -v /etc/letsencrypt:/srv/letsencrypt \
+    -v /srv/letsencrypt:/etc/letsencrypt \
     -p 80:80 -p 443:443
     bradjonesllc/docker-nginx-letsencrypt
 ```
