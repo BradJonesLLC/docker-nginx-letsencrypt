@@ -1,5 +1,7 @@
 # Dockerized Nginx with Let's Encrypt
 
+[![Docker Automated buil](https://img.shields.io/docker/automated/bradjonesllc/docker-nginx-letsencrypt.svg?maxAge=2592000)](https://hub.docker.com/r/bradjonesllc/docker-nginx-letsencrypt/)
+
 This container provides an Nginx application with Let's Encrypt certificates
 generated at startup, as well as renewed (if necessary) and Nginx gracefully restarted.
 
