@@ -9,6 +9,7 @@ RUN set -x \
     cron \
     dnsmasq \
     wget \
+    python-ndg-httpsclient \
     && apt-get install --no-install-recommends -yqq certbot -t jessie-backports \
     && wget https://github.com/Supervisor/supervisor/archive/${SUPERVISOR_VERSION}.tar.gz \
     && tar -xvf ${SUPERVISOR_VERSION}.tar.gz \
