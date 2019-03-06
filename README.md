@@ -1,3 +1,5 @@
+**Archived** -- Use [Traefik](https://traefik.io/) instead.
+
 # Dockerized Nginx with Let's Encrypt
 
 [![Docker Automated buil](https://img.shields.io/docker/automated/bradjonesllc/docker-nginx-letsencrypt.svg?maxAge=2592000)](https://hub.docker.com/r/bradjonesllc/docker-nginx-letsencrypt/)
